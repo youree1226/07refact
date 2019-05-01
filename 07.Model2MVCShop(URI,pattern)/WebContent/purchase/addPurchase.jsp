@@ -38,8 +38,8 @@
 		<td>구매방법</td>
 		<td>
 			<c:choose>
-				<c:when test="${purchase.paymentOption=='1'}">현금구매</c:when>
-				<c:when test="${purchase.paymentOption=='2'}">신용구매</c:when>
+				<c:when test="${purchase.paymentOption=='1  '}">현금구매</c:when>
+				<c:when test="${purchase.paymentOption=='2  '}">신용구매</c:when>
 			</c:choose>
 		</td>
 	</tr>

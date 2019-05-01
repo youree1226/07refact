@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
@@ -23,11 +22,8 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductDao;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.product.impl.ProductDaoImpl;
-import com.model2.mvc.service.product.impl.ProductServiceImpl;
 import com.model2.mvc.service.purchase.PurchaseService;
-import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
 import com.model2.mvc.service.user.UserService;
-import com.model2.mvc.service.user.impl.UserDaoImpl;
 
 
 //==> 회원관리 Controller
@@ -92,12 +88,13 @@ public class PurchaseController {
 		System.out.println("==============================");
 		System.out.println("AddPurchaseAction - START"); 
 		
+		System.out.println(purchase);
 		purchase.setTranCode("1");//tranCode가 null이면 판매중, "1"이면 판매완료, "2"면 배송시작, "3"이면 배송완료로 설정하겠다.
 		//orderDate도 현재 날짜를 입력해야하는 것이므로, 사용자로부터 입력받지않고 DB에 입력할때 sysdate으로 넣는다.
 		purchase.setBuyer(userService.getUser(request.getParameter("buyerId")));
 		purchase.setPurchaseProd(productService.getProduct(Integer.parseInt(request.getParameter("prodNo"))));
 		
-		System.out.println("AddPurchaseAction - purchaseVO : "+purchase);
+		System.out.println("AddPurchaseAction - "+purchase);
 		
 		purchaseService.addPurchase(purchase);
 		
