@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
@@ -147,7 +148,7 @@ public class ProductController {
 		return "forward:/product/getProduct.jsp";
 	}
 	
-	@RequestMapping(value="updateProductView")
+	@RequestMapping(value="updateProduct", method=RequestMethod.GET)
 	public String updateProductView(HttpServletRequest request, Model model) throws Exception{
 
 		System.out.println("==============================");
@@ -164,7 +165,7 @@ public class ProductController {
 		return "forward:/product/updateProductView.jsp";
 	}
 	
-	@RequestMapping(value="updateProduct")
+	@RequestMapping(value="updateProduct", method=RequestMethod.POST)
 	public String updateProduct(HttpServletRequest request, Model model) throws Exception{
 
 		System.out.println("==============================");

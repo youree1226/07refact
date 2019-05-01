@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model2.mvc.common.Page;
@@ -62,8 +63,7 @@ public class PurchaseController {
 	int pageSize;
 	
 	
-	@RequestMapping(value="addPurchaseView")
-
+	@RequestMapping(value="addPurchase", method=RequestMethod.GET)
 	public String addPurchaseView(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 
 		System.out.println("==============================");
@@ -86,7 +86,7 @@ public class PurchaseController {
 		return "forward:/purchase/addPurchaseView.jsp";
 	}
 	
-	@RequestMapping(value="addPurchase")
+	@RequestMapping(value="addPurchase", method=RequestMethod.POST)
 	public String addPurchase(@ModelAttribute("purchase") Purchase purchase, HttpServletRequest request, Model model) throws Exception {
 		
 		System.out.println("==============================");
@@ -134,7 +134,7 @@ public class PurchaseController {
 		return "forward:/purchase/getPurchase.jsp";
 	}
 	
-	@RequestMapping(value="updatePurchaseView")
+	@RequestMapping(value="updatePurchase", method=RequestMethod.GET)
 	public String updatePurchaseView(HttpServletRequest request, Model model ) throws Exception{
 
 		System.out.println("==============================");
@@ -154,7 +154,7 @@ public class PurchaseController {
 		return "forward:/purchase/updatePurchaseView.jsp";
 	}
 	
-	@RequestMapping(value="updatePurchase")
+	@RequestMapping(value="updatePurchase", method=RequestMethod.POST)
 	public String updatePurchase( HttpServletRequest request , Model model ) throws Exception{
 
 		System.out.println("==============================");
