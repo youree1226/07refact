@@ -25,6 +25,7 @@ import com.model2.mvc.service.purchase.PurchaseService;
 
 //==> 회원관리 Controller
 @Controller
+@RequestMapping("/product/*")
 public class ProductController {
 	
 	///Field
@@ -53,7 +54,7 @@ public class ProductController {
 	int pageSize;
 	
 	
-	@RequestMapping("/addProduct.do")
+	@RequestMapping(value="addProduct")
 	public String addProduct(HttpServletRequest request, Model model) throws Exception {
 
 		System.out.println("==============================");
@@ -85,7 +86,7 @@ public class ProductController {
 		return "forward:/product/addProduct.jsp";
 	}
 	
-	@RequestMapping("/getProduct.do")
+	@RequestMapping(value="getProduct")
 	public String getProduct( HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 
 		System.out.println("==============================");
@@ -146,7 +147,7 @@ public class ProductController {
 		return "forward:/product/getProduct.jsp";
 	}
 	
-	@RequestMapping("/updateProductView.do")
+	@RequestMapping(value="updateProductView")
 	public String updateProductView(HttpServletRequest request, Model model) throws Exception{
 
 		System.out.println("==============================");
@@ -163,7 +164,7 @@ public class ProductController {
 		return "forward:/product/updateProductView.jsp";
 	}
 	
-	@RequestMapping("/updateProduct.do")
+	@RequestMapping(value="updateProduct")
 	public String updateProduct(HttpServletRequest request, Model model) throws Exception{
 
 		System.out.println("==============================");
@@ -191,10 +192,10 @@ public class ProductController {
 		
 		System.out.println("UpdateProductAction - END"); 
 		
-		return "forward:/getProduct.do?menu=manage&prodNo="+prodNo;
+		return "forward:/product/getProduct?menu=manage&prodNo="+prodNo;
 	}
 	
-	@RequestMapping("/listProduct.do")
+	@RequestMapping(value="listProduct")
 	public String listProduct( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) throws Exception{
 		
 		System.out.println("==============================");

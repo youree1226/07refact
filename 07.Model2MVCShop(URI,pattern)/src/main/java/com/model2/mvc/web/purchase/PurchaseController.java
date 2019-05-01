@@ -31,6 +31,7 @@ import com.model2.mvc.service.user.impl.UserDaoImpl;
 
 //==> 회원관리 Controller
 @Controller
+@RequestMapping("/purchase/*")
 public class PurchaseController {
 	
 	///Field
@@ -61,7 +62,7 @@ public class PurchaseController {
 	int pageSize;
 	
 	
-	@RequestMapping("/addPurchaseView.do")
+	@RequestMapping(value="addPurchaseView")
 
 	public String addPurchaseView(HttpServletRequest request, HttpSession session, Model model) throws Exception {
 
@@ -85,7 +86,7 @@ public class PurchaseController {
 		return "forward:/purchase/addPurchaseView.jsp";
 	}
 	
-	@RequestMapping("/addPurchase.do")
+	@RequestMapping(value="addPurchase")
 	public String addPurchase(@ModelAttribute("purchase") Purchase purchase, HttpServletRequest request, Model model) throws Exception {
 		
 		System.out.println("==============================");
@@ -110,7 +111,7 @@ public class PurchaseController {
 		
 	}
 	
-	@RequestMapping("/getPurchase.do")
+	@RequestMapping(value="getPurchase")
 	public String getPurchase( HttpServletRequest request , Model model ) throws Exception {
 		
 		System.out.println("==============================");
@@ -133,7 +134,7 @@ public class PurchaseController {
 		return "forward:/purchase/getPurchase.jsp";
 	}
 	
-	@RequestMapping("/updatePurchaseView.do")
+	@RequestMapping(value="updatePurchaseView")
 	public String updatePurchaseView(HttpServletRequest request, Model model ) throws Exception{
 
 		System.out.println("==============================");
@@ -153,7 +154,7 @@ public class PurchaseController {
 		return "forward:/purchase/updatePurchaseView.jsp";
 	}
 	
-	@RequestMapping("/updatePurchase.do")
+	@RequestMapping(value="updatePurchase")
 	public String updatePurchase( HttpServletRequest request , Model model ) throws Exception{
 
 		System.out.println("==============================");
@@ -189,10 +190,10 @@ public class PurchaseController {
 		
 		System.out.println("UpdatePurchaseAction - END"); 
 		
-		return "forward:/getPurchase.do?update=update&tranNo="+purchase.getTranNo();
+		return "forward:/purchase/getPurchase?update=update&tranNo="+purchase.getTranNo();
 	}
 	
-	@RequestMapping("/updateTranCode.do")
+	@RequestMapping(value="updateTranCode")
 	public String updateTranCode(HttpServletRequest request) throws Exception{
 		
 		System.out.println("==============================");
@@ -208,11 +209,11 @@ public class PurchaseController {
 		
 		System.out.println("UpdateTranCodeAction - END"); 
 		
-		return "forward:/listPurchase.do?page="+currentPage;
+		return "forward:/purchase/listPurchase?page="+currentPage;
 		//return "forward:/purchase/getPurchase.do?tranNo="+purchase.getTranNo();
 	}
 	
-	@RequestMapping("/updateTranCodeByProd.do")
+	@RequestMapping(value="updateTranCodeByProd")
 	public String updateTranCodeByProd(HttpServletRequest request, Model model) throws Exception{
 		
 		System.out.println("==============================");
@@ -228,11 +229,11 @@ public class PurchaseController {
 		
 		System.out.println("UpdateTranCodeByProdAction - END"); 
 		
-		return "forward:/listProduct.do?page="+currentPage+"&menu=manage";
+		return "forward:/purchase/listProduct?page="+currentPage+"&menu=manage";
 		//return "forward:/purchase/getPurchase.do?tranNo="+purchase.getTranNo();
 	}
 	
-	@RequestMapping("/cancelPurchase.do")
+	@RequestMapping(value="cancelPurchase")
 	public String cancelPurchase(HttpServletRequest request, Model model) throws Exception{
 		
 		System.out.println("==============================");
@@ -252,10 +253,10 @@ public class PurchaseController {
 		
 		System.out.println("CancelPurchaseAction - END"); 
 		
-		return "forward:/listPurchase.do";
+		return "forward:/purchase/listPurchase";
 	}
 	
-	@RequestMapping("/listPurchase.do")
+	@RequestMapping(value="listPurchase")
 	public String listPurchase( @ModelAttribute("search") Search search , Model model ,HttpSession session ) throws Exception{
 		
 		System.out.println("==============================");
