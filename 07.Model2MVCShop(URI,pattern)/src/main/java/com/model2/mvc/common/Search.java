@@ -8,6 +8,10 @@ public class Search {
 	private int currentPage;
 	private String searchCondition;
 	private String searchKeyword;
+	private String ascendingCondition;
+	private String onSale;
+	private int lowPrice;
+	private int highPrice;
 	private int pageSize;
 	//==> 리스트화면 currentPage에 해당하는 회원정보를 ROWNUM 사용 SELECT 위해 추가된 Field 
 	//==> UserMapper.xml 의 
@@ -57,6 +61,34 @@ public class Search {
 	public int getStartRowNum() {
 		return (getCurrentPage()-1)*getPageSize()+1;
 	}
+	
+	public String getAscendingCondition() {
+		return ascendingCondition;
+	}
+	public void setAscendingCondition(String ascendingCondition) {
+		this.ascendingCondition = ascendingCondition;
+	}
+	public String getOnSale() {
+		return onSale;
+	}
+	public void setOnSale(String onSale) {
+		this.onSale = onSale;
+	}
+	public int getLowPrice() {
+		return lowPrice;
+	}
+	public void setLowPrice(int lowPrice) {
+		this.lowPrice = lowPrice;
+	}
+	public int getHighPrice() {
+		return highPrice;
+	}
+	public void setHighPrice(int highPrice) {
+		this.highPrice = highPrice;
+	}
+	
+	
+	
 
 	@Override
 	public String toString() {
