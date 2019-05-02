@@ -121,15 +121,19 @@ public class ProductController {
 		Cookie[] cookies = request.getCookies();
 		
 		if (cookies!=null && cookies.length > 0) {
+			System.out.println("cookies!=null && cookies.length > 0");
 			for (int i = 0; i < cookies.length; i++) {
 				Cookie cookie = cookies[i];
 				if (cookie.getName().equals("history")) {
 					history = cookie.getValue();
+					System.out.println(cookie.getPath());
 				}
 			}
 			if (history != null) {
+				System.out.println("history != null");
 				String[] h = history.split(",");
 				for (int i = 0; i < h.length; i++) {
+					System.out.println("h[i] : "+h[i]);
 					if (h[i].equals(request.getParameter("prodNo"))) {
 						break;
 						}
@@ -141,7 +145,9 @@ public class ProductController {
 		}
 		
 		Cookie cookie = new Cookie("history",history);
+		System.out.println(cookie.getValue());
 		cookie.setMaxAge(-1);
+		cookie.setPath("/");
 		response.addCookie(cookie);
 		
 		System.out.println("GetProductAction - END"); 
